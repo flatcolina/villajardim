@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "produtos",
+  "info": {
+    "singularName": "produto",
+    "pluralName": "produtos",
+    "displayName": "Produto",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "descricao": {
+      "type": "richtext"
+    },
+    "foto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "preco": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "estoque": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "default": 0
+    },
+    "disponivel": {
+      "type": "boolean",
+      "default": true
+    },
+    "visivel": {
+      "type": "boolean",
+      "default": true
+    },
+    "unidade": {
+      "type": "enumeration",
+      "enum": ["KG", "G", "L", "ML", "UN"],
+      "required": true,
+      "default": "UN"
+    },
+    "dataVencimento": {
+      "type": "date"
+    },
+    "exibirVencimento": {
+      "type": "boolean",
+      "default": false
+    },
+    "promocao": {
+      "type": "boolean",
+      "default": false
+    },
+    "categoria": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoria.categoria",
+      "inversedBy": "produtos"
+    }
+  }
+}
